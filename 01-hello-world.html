@@ -1,0 +1,14 @@
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+<h2 data-bind='text: helloWorld'>This text won't be displayed</h2>
+
+<script>
+function HelloWorldViewModel() {
+  var self = this;
+
+  self.helloWorld = "Hello world!";
+}
+
+ko.applyBindings(new HelloWorldViewModel());
+</script>

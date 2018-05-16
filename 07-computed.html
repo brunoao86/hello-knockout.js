@@ -1,0 +1,21 @@
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+<input type='text' data-bind='value: name'>'
+<h2 data-bind='text: full_name()'>This text won't be displayed</h2>
+
+<script>
+function HelloWorldViewModel() {
+  var self = this;
+
+  self.name      = ko.observable("Bruno");
+  self.last_name = ko.observable("Oliveira");
+
+  self.full_name = ko.computed(function() {
+    return self.name() + ' ' + self.last_name();
+  });
+
+}
+
+ko.applyBindings(new HelloWorldViewModel());
+</script>

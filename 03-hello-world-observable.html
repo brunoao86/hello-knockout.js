@@ -1,0 +1,26 @@
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+<h2 data-bind='text: helloWorld'>This text won't be displayed</h2>
+
+<h2 data-bind='text: helloWorldObservable()'>This text won't be displayed</h2>
+
+<script>
+function HelloWorldViewModel() {
+  var self = this;
+
+  self.helloWorld = "Hello world!";
+
+  self.helloWorldObservable = ko.observable("Hello world Observable!");
+
+  setInterval(function() {
+    self.helloWorld = "[Edited] Hello world!";
+    self.helloWorldObservable("[Edited] Hello world Observable!");
+
+    console.log('helloWorld =', self.helloWorld);
+    console.log('helloWorldObservable =', self.helloWorldObservable());
+  }, 5000);
+}
+
+ko.applyBindings(new HelloWorldViewModel());
+</script>

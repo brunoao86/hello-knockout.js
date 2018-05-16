@@ -1,0 +1,27 @@
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+<ul data-bind="foreach: my_array">
+    <li data-bind="visible: index % 2 == 0">
+        The current item is: <b data-bind="text: value"></b>
+    </li>
+</ul>
+
+<script>
+function HelloWorldViewModel() {
+  var self = this;
+  var i = 0;
+
+  self.my_array = ko.observableArray();
+
+  setInterval(function() {
+    i = i + 1;
+    self.my_array.push({
+      index: i,
+      value: 'Value #'+ i
+    });
+  }, 1000);
+}
+
+ko.applyBindings(new HelloWorldViewModel());
+</script>

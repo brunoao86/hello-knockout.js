@@ -1,0 +1,22 @@
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+
+<h2 data-bind='text: currentTime()'></h2>
+
+<script>
+function TimeViewModel() {
+  var self = this;
+
+  var _getCurrentTime = function() {
+    return new Date().toLocaleTimeString();
+  }
+
+  self.currentTime = ko.observable(_getCurrentTime());
+
+  setInterval(function(){
+    self.currentTime(_getCurrentTime());
+  },1000);
+}
+
+ko.applyBindings(new TimeViewModel());
+</script>
